@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiniBlog - Suchithra</title>
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="miniblog.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- ================= LEFT SIDEBAR ================= -->
+    <aside class="left-sidebar">
+
+        <div class="logo">S</div>
+
+        <nav class="main-nav">
+
+            <button onclick="showPage('home')" class="nav-item active">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+            </button>
+
+            <button onclick="showPage('explore')" class="nav-item">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <span>Explore</span>
+            </button>
+
+            <button onclick="showPage('notifications')" class="nav-item">
+                <i class="fa-solid fa-bell"></i>
+                <span>Notifications</span>
+            </button>
+
+            <button onclick="showPage('messages')" class="nav-item">
+                <i class="fa-solid fa-envelope"></i>
+                <span>Messages</span>
+            </button>
+
+            <button onclick="showPage('bookmarks')" class="nav-item">
+                <i class="fa-solid fa-bookmark"></i>
+                <span>Bookmarks</span>
+            </button>
+
+            <button onclick="showPage('profile')" class="nav-item">
+                <i class="fa-solid fa-user"></i>
+                <span>Profile</span>
+            </button>
+
+            <button onclick="showPage('following')" class="nav-item">
+                <i class="fa-solid fa-user-group"></i>
+                <span>Following</span>
+            </button>
+
+            <button onclick="showPage('settings')" class="nav-item">
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+            </button>
+
+        </nav>
+
+        <button class="post-button" onclick="openPostBox()">
+            <i class="fa-solid fa-pen"></i>
+            Post
+        </button>
+
+    </aside>
+
+
+    <!-- ================= CENTER CONTENT ================= -->
+    <main class="content" id="content">
+
+        <!-- HOME PAGE -->
+        <section id="homePage" class="page">
+
+            <div class="page-title">Home</div>
+
+            <!-- Create Post -->
+            <div class="create-post">
+
+                <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=100&q=80"
+                     class="small-dog">
+
+                <input type="text"
+                       id="postInput"
+                       placeholder="What's happening?">
+
+                <button onclick="createPost()">Post</button>
+
+            </div>
+
+            <div id="posts">
+
+                <!-- POST 1 -->
+                <article class="post">
+
+                    <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=100&q=80"
+                         class="avatar">
+
+                    <div class="post-content">
+
+                        <div class="post-header">
+                            <strong>Suchithra</strong>
+                            <i class="fa-solid fa-circle-check verified"></i>
+                        </div>
+
+                        <p>Hello Everyone! 👋</p>
+
+                        <div class="post-actions">
+                            <span onclick="likePost(this)">
+                                <i class="fa-regular fa-heart"></i>
+                                <b>0</b>
+                            </span>
+
+                            <span>
+                                <i class="fa-regular fa-comment"></i>
+                                Comment
+                            </span>
+
+                            <span>
+                                <i class="fa-solid fa-retweet"></i>
+                                Repost
+                            </span>
+
+                            <span>
+                                <i class="fa-regular fa-bookmark"></i>
+                                Save
+                            </span>
+
+                            <span onclick="deletePost(this)">
+                                <i class="fa-regular fa-trash-can"></i>
+                                Delete
+                            </span>
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- POST 2 -->
+                <article class="post">
+
+                    <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=100&q=80"
+                         class="avatar">
+
+                    <div class="post-content">
+
+                        <div class="post-header">
+                            <strong>Suchithra</strong>
+                            <i class="fa-solid fa-circle-check verified"></i>
+                        </div>
+
+                        <p>Welcome to my MiniBlog! 📝</p>
+
+                        <div class="post-actions">
+
+                            <span onclick="likePost(this)">
+                                <i class="fa-regular fa-heart"></i>
+                                <b>4</b>
+                            </span>
+
+                            <span>
+                                <i class="fa-regular fa-comment"></i>
+                                Comment
+                            </span>
+
+                            <span>
+                                <i class="fa-solid fa-retweet"></i>
+                                Repost
+                            </span>
+
+                            <span>
+                                <i class="fa-regular fa-bookmark"></i>
+                                Save
+                            </span>
+
+                            <span onclick="deletePost(this)">
+                                <i class="fa-regular fa-trash-can"></i>
+                                Delete
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- PROFILE PAGE -->
+        <section id="profilePage" class="page hidden">
+
+            <div class="page-title">Profile</div>
+
+            <div class="profile-area">
+
+                <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=300&q=80"
+                     class="profile-dog">
+
+                <h2>Suchithra</h2>
+
+                <p class="username">@suchithra</p>
+
+                <p class="bio">
+                    🎓 BTech IT Student<br>
+                    Welcome to my MiniBlog profile
+                </p>
+
+                <div class="profile-stats">
+
+                    <div>
+                        <strong>1</strong>
+                        <span>Posts</span>
+                    </div>
+
+                    <div>
+                        <strong>120</strong>
+                        <span>Followers</span>
+                    </div>
+
+                    <div>
+                        <strong>85</strong>
+                        <span>Following</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- MESSAGES PAGE -->
+        <section id="messagesPage" class="page hidden">
+
+            <div class="page-title">Messages</div>
+
+            <div class="messages-container">
+
+                <div class="message received">
+                    <strong>Alex</strong>
+                    <p>Hey Suchithra! 👋</p>
+                </div>
+
+                <div class="message sent">
+                    <strong>Suchithra</strong>
+                    <p>Hi! How are you?</p>
+                </div>
+
+                <div class="message sent">
+                    <strong>Suchithra</strong>
+                    <p>hi</p>
+                </div>
+
+            </div>
+
+            <div class="message-input">
+
+                <input type="text"
+                       id="messageInput"
+                       placeholder="Write a message...">
+
+                <button onclick="sendMessage()">Send</button>
+
+            </div>
+
+        </section>
+
+
+        <!-- SETTINGS PAGE -->
+        <section id="settingsPage" class="page hidden">
+
+            <div class="page-title">Settings</div>
+
+            <div class="settings">
+
+                <h3>Account Settings</h3>
+
+                <label>Name</label>
+                <input type="text" value="Suchithra">
+
+                <label>Email</label>
+                <input type="email" value="suchithra@gmail.com">
+
+                <button onclick="saveSettings()">
+                    Save Changes
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- EXPLORE PAGE -->
+        <section id="explorePage" class="page hidden">
+
+            <div class="page-title">Explore</div>
+
+            <div class="simple-page">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <h2>Explore MiniBlog</h2>
+                <p>Discover posts and people on MiniBlog.</p>
+            </div>
+
+        </section>
+
+
+        <!-- NOTIFICATIONS PAGE -->
+        <section id="notificationsPage" class="page hidden">
+
+            <div class="page-title">Notifications</div>
+
+            <div class="notification">
+                ❤️ Someone liked your post.
+            </div>
+
+            <div class="notification">
+                👤 Maha started following you.
+            </div>
+
+        </section>
+
+
+        <!-- BOOKMARKS PAGE -->
+        <section id="bookmarksPage" class="page hidden">
+
+            <div class="page-title">Bookmarks</div>
+
+            <div class="simple-page">
+                <i class="fa-solid fa-bookmark"></i>
+                <h2>Your Bookmarks</h2>
+                <p>Saved posts will appear here.</p>
+            </div>
+
+        </section>
+
+
+        <!-- FOLLOWING PAGE -->
+        <section id="followingPage" class="page hidden">
+
+            <div class="page-title">Following</div>
+
+            <div class="following-list">
+
+                <div class="person">
+                    <div class="person-avatar">M</div>
+                    <strong>Maha</strong>
+                    <button>Following</button>
+                </div>
+
+                <div class="person">
+                    <div class="person-avatar">S</div>
+                    <strong>Sofi</strong>
+                    <button>Following</button>
+                </div>
+
+                <div class="person">
+                    <div class="person-avatar">A</div>
+                    <strong>Anu</strong>
+                    <button>Follow</button>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= RIGHT SIDEBAR ================= -->
+    <aside class="right-sidebar">
+
+        <input class="search" type="text" placeholder="Search MiniBlog...">
+
+
+        <!-- What's happening -->
+        <div class="side-card">
+
+            <h3>What's happening</h3>
+
+            <p>🔥 #Technology</p>
+            <p>💻 #Programming</p>
+            <p>📌 #StudentLife</p>
+            <p>📚 #CollegeLife</p>
+            <p>🌟 #MiniBlog</p>
+
+        </div>
+
+
+        <!-- Who to follow -->
+        <div class="side-card">
+
+            <h3>Who to follow</h3>
+
+            <div class="follow-person">
+
+                <div class="person-avatar">M</div>
+
+                <span>Maha</span>
+
+                <button>Following</button>
+
+            </div>
+
+            <div class="follow-person">
+
+                <div class="person-avatar">S</div>
+
+                <span>Sofi</span>
+
+                <button>Following</button>
+
+            </div>
+
+            <div class="follow-person">
+
+                <div class="person-avatar">A</div>
+
+                <span>Anu</span>
+
+                <button class="follow">Follow</button>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+</div>
+
+
+<!-- ================= POST MODAL ================= -->
+<div id="postModal" class="modal hidden">
+
+    <div class="modal-box">
+
+        <h2>Create Post</h2>
+
+        <textarea id="modalPost"
+                  placeholder="What's happening?"></textarea>
+
+        <div class="modal-buttons">
+            <button onclick="closePostBox()">Cancel</button>
+            <button onclick="createModalPost()">Post</button>
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="miniblog.js"></script>
+
+</body>
+</html>
